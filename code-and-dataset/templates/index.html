@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Stroke Brain Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+ <div class="login">
+	<h1>Stroke Brain Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+
+    	<label for="gender" style="margin-bottom: 20px">Choose your gender:  </label>
+        <select id="gender" name="genders"style="margin-bottom: 20px">
+          <option value="1">Male</option>
+          <option value="0">Female</option>
+        </select><br />
+
+
+        <label for="age" style="margin-bottom: 20px">Enter your age  </label>
+        <input type="number" style="margin-bottom: 20px" id="age" name="age" placeholder="age (number)" required="required" /><br />
+
+        <label for="hypertension" style="margin-bottom: 20px">Do you have hypertension  </label>
+        <select id="hypertension" style="margin-bottom: 20px" name="hypertensionC">
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select><br />
+
+		<label for="heartdisease" style="margin-bottom: 20px">Do you have heart disease  </label>
+        <select id="heartdisease" style="margin-bottom: 20px" name="heartdiseaseC">
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select><br />
+
+        <label for="evermarried" style="margin-bottom: 20px">Do you eve married  </label>
+        <select id="evermarried" style="margin-bottom: 20px" name="evermarriedC">
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select><br />
+
+        <label for="worktype" style="margin-bottom: 20px">What is your work type?  </label>
+        <select id="worktype" style="margin-bottom: 20px" name="worktypeC">
+          <option value="2">Private</option>
+          <option value="3">Self employed</option>
+          <option value="0">Government job</option>
+          <option value="4">Children</option>
+          <option value="1">Never worked</option>
+        </select><br />
+
+		<label for="residencetype" style="margin-bottom: 20px">Do you eve married  </label>
+        <select id="residencetype" style="margin-bottom: 20px" name="residencetypeC">
+          <option value="1">Urban</option>
+          <option value="0">Rural</option>
+        </select><br />
+
+
+        <label for="avgglucoselevel" style="margin-bottom: 20px">Enter your average glucose level  </label>
+		<input type="number" style="margin-bottom: 20px" id="avgglucoselevel" name="avgglucoselevel"
+               placeholder="average glucose level (number)" required="required" /><br />
+
+        <label for="bmi" style="margin-bottom: 20px">Enter your Body mass index  </label>
+        <input type="number" style="margin-bottom: 20px" id="bmi" name="bmi" placeholder="Body mass index (number)" required="required" /><br />
+
+
+        <label for="smokestatus" style="margin-bottom: 20px">Choose your smoking status  </label>
+        <select id="smokestatus" style="margin-bottom: 20px" name="smokestatusC">
+          <option value="2">Never smoked</option>
+          <option value="1">Formerly smoked</option>
+          <option value="3">Smokes</option>
+          <option value="0">Unknown</option>
+        </select><br />
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
